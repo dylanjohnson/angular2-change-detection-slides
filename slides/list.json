@@ -16,7 +16,8 @@
     ],
     [
         "react-overview.html",
-        "react-virtual-dom.html"
+        "react-virtual-dom.html",
+        "immutable.html"
     ],
     [
         "flux-overview.html",

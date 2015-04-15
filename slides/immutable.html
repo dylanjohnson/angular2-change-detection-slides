@@ -1,0 +1,15 @@
+<h2 style="margin-top: -100px;">Persistent Immutable Data Models</h2>
+<p class="fragment" data-fragment-index="0"><em>From ImmutableJS site:</em> Immutable data cannot be changed once created,
+    leading to much simpler application development, no defensive copying, and enabling advanced memoization and change
+    detection techniques with simple logic</p>
+<p class="fragment" data-fragment-index="1">Allows for easy undo/redo; just get the last copy</p>
+<p class="fragment" data-fragment-index="2">Will become prevalent in ES7 with Observables</p>
+<pre class="fragment" data-fragment-index="3">
+    <code>
+var Immutable = require('immutable');
+var map1 = Immutable.Map({a:1, b:2, c:3});
+var map2 = map1.set('b', 50);
+map1.get('b'); // 2
+map2.get('b'); // 50
+    </code>
+</pre>
