@@ -1,0 +1,21 @@
+<h2>Data flow and change detection in Angular 1</h2>
+<br />
+<br />
+
+<p class="fragment" data-fragment-index="0">Bidirectional data flow pattern</p>
+<p class="fragment" data-fragment-index="1">Reconciles state through dirty checking in the digest cycle</p>
+<p class="fragment" data-fragment-index="2">Lacking separation of concerns hurts performance and developer understanding</p>
+
+<aside class="notes">
+    <ul>
+        <li>Before we can understand how Angular2 blends the best of Angular 1, React and Flux into Flux Plus we need to
+            understand change detection and data flow in Angular 1</li>
+        <li>Angular 1 uses a bidirectional data flow pattern; obviously this means data flows up and down the object
+            graph. What may not be obvious is why that matters, so we'll take a look at the negatives associated
+            with two-way data flow.</li>
+        <li>Angular uses the digest cycle and dirty checking to propagate actions from app code to data model.</li>
+        <li>With these two key factors in mind, we can see that Angular 1.x does not separate the concerns of
+            application model and presentation layer. We all know that separation of concerns is
+            a good thing, but we'll see some examples of how it's specifically problematic in an Angular context.</li>
+    </ul>
+</aside>

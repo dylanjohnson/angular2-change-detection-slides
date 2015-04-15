@@ -1,0 +1,18 @@
+<h2>Two way data bindings with ng-model</h2>
+<pre>
+    <code>
+        <div ng-controller="appController">
+            <input type="text" ng-model="someTextValue" />
+
+            <select ng-model="someEnumValue" ng-options="item as item.label in someEnumArray"></select>
+
+            <div ng-controller="someOtherController">
+                <p>{{someTextValue}}</p>
+            </div>
+
+            <div ng-controller="stillAnotherController">
+                <p>{{someEnumValue}}</p>
+            </div>
+        </div>
+    </code>
+</pre>
