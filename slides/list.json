@@ -10,5 +10,20 @@
     ],
     [
         "separation-of-concerns.html"
+    ],
+    [
+        "dirty-checking.html"
+    ],
+    [
+        "react-overview.html",
+        "react-virtual-dom.html"
+    ],
+    [
+        "flux-overview.html",
+        "flux-diagram.html",
+        "flux-sample.html"
+    ],
+    [
+        "angular2-overview.html"
     ]
 ]

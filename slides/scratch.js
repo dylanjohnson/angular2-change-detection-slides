@@ -1,9 +1,8 @@
-<h2 style="margin-top: -100px;">Communicating in two directions with $emit and $broadcast</h2>
-<pre>
-    <code style="max-height: 670px">
-angular.module('myApp')
+angular
+    .module('myApp')
     .controller('myCtrl', MyCtrl)
-    .controller('myChildCtrl', MyCtrl);
+    .controller('myChildCtrl', MyCtrl)
+;
 
 MyCtrl.$inject = ['$scope'];
 function MyCtrl($scope, myUserService) {
@@ -22,7 +21,7 @@ function MyChildCtrl($scope) {
     $scope.comments = [];
 
     $scope.$on('user:loggedOut', function () {
-        // empty the comments; catching an event from above is OK
+        // empty the comments
         $scope.comments = [];
     });
 
@@ -33,16 +32,6 @@ function MyChildCtrl($scope) {
         // AND cause parent state to update; this is not good
         $scope.$emit('user:addComment', comment);
     };
+
     // ^^ AND we didn't bind the function returned from $on, so we could have a memory leak
 }
-
-    </code>
-</pre>
-
-
-
-<aside class="notes">
-    <ul>
-        <li>As we move on, we'll see how this is much different than the eventing mechanisms in React and Flux.</li>
-    </ul>
-</aside>

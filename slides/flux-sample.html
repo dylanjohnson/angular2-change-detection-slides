@@ -1,0 +1,56 @@
+<h2 style="margin-top: -100px;">In code</h2>
+<pre>
+    <code style="max-height: 650px">
+var React = require("react"), Reflux = require("reflux"), require("superagent");
+
+var actions = Reflux.createActions(["updateAge"]);
+
+var store = Reflux.createStore({
+    data: {people: []},
+
+    listenables: [actions],
+
+    onUpdateAge() {
+        this.data.people.map(person => {
+            person.age = Math.random() * 100;
+            this.trigger(this.data);
+        });
+    },
+
+    init() {
+        request("http://localhost:8000/people.json", (err, res) => {
+        this.data.people = JSON.parse(res.text);
+        this.trigger(this.data);
+    })
+},
+
+    getInitialState() {
+        return this.data;
+    }
+});
+
+var App = React.createClass({
+    mixins: [Reflux.connect(store)],
+
+    render() {
+        return (
+        <div>
+            {this.state.people.map(person => {
+            return (<Person key={person.id} name={person.name} />)
+            })}
+        </div>);
+    }
+});
+
+var Person = React.createClass({
+    render() {
+        return(
+            <div><h2>{this.props.name}</h2></div>
+        );
+    }
+});
+
+React.render(<App />, document.getElementById('example'));
+
+    </code>
+</pre>

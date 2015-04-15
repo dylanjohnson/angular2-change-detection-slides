@@ -1,1 +1,37 @@
-<h2>Triggering changes in application and presentation models with $scope.$watch</h2>
+<h2 style="margin-top: -100px">Triggering changes in application and presentation models with $scope.$watch</h2>
+<pre>
+    <code style="max-height: 650px">
+angular
+    .module('myApp')
+    .controller('myCtrl', MyCtrl)
+    .controller('myOtherCtrl', MyOtherCtrl)
+;
+
+var inject = ['$scope', 'myDataService', 'myStateService'];
+
+// uh-oh, we're sharing mutable state between controllers
+MyCtrl.$inject = inject;
+MyDropdownFilterCtrl.$inject = inject;
+
+function MyCtrl($scope, myDataService, myStateService) {
+    $scope.$watch(function () {
+        return myDataService.someCollection;
+    }, function (newValue) {
+        // show some list if length isn't 0
+        myStateService.showItems = !!newValue.length
+    });
+}
+
+function MyDropdownFilterCtrl($scope, myDataService, myStateService) {
+    $scope.$watch(function () {
+        return myDataService.someCollection;
+    }, function (newValue) {
+        // uh-oh, we're communicating up AND down the object graph
+        // our shared mutable state makes it difficult to understand why things show/hide
+        if (newValue.indexOf('someForbiddenValue']) >= 0) {
+            myStateService.showItems = false;
+        }
+    });
+}
+    </code>
+</pre>

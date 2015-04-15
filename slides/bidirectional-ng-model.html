@@ -2,16 +2,17 @@
 <pre>
     <code>
         <div ng-controller="appController">
+            <!-- this is a READ/WRITE, or two-way binding-->
             <input type="text" ng-model="someTextValue" />
 
             <select ng-model="someEnumValue" ng-options="item as item.label in someEnumArray"></select>
 
             <div ng-controller="someOtherController">
-                <p>{{someTextValue}}</p>
+                <p>{{someTextValue}}</p> <!-- I'm tied to the parent $scope, so any changes will propagate upward -->
             </div>
 
             <div ng-controller="stillAnotherController">
-                <p>{{someEnumValue}}</p>
+                <p>{{someEnumValue}}</p><!-- me too -->
             </div>
         </div>
     </code>
