@@ -29,6 +29,7 @@
         "angular2-syntax.html",
         "angular2-rendering-architecture.html",
         "angular2-no-cascading-changes.html",
-        "angular2-improve-immutable.html"
+        "angular2-improve-immutable.html",
+        "angular2-improve-observable.html"
     ]
 ]

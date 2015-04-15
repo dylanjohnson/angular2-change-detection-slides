@@ -1,0 +1,12 @@
+<h2 style="margin-top:-40px">Angular2 also improves performance by recognizing observables</h2>
+<pre><code>
+type ObservableTodo = Observable<Todo>;
+type ObservableTodos = Observable<Array<ObservableTodo>>;
+
+@Component({selector:’todos’})
+class ObservableTodosCmp {
+    todos:ObservableTodos;
+    //...
+}
+</code></pre>
+<img src="img/observable.png" />
